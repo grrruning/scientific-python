@@ -1,0 +1,23 @@
+def gc_content(pattern):
+  at = gc =0
+  for p in pattern:
+    if p == "A" or p == "T":
+        at = at+1
+    if p=="G" or p=="C":
+        gc = gc+1
+  return(at,gc)
+
+def calculation(at,gc,length,prob):
+  at_p = (1-prob)/2
+  gc_p = (prob)/2
+  k = 1-((at_p**at)*(gc_p**gc))
+  answer = round(1-(k**length),3)
+  return(answer)
+    
+if __name__ == "__main__":
+  length,prob = input().split()
+  length = int(length)
+  prob = float(prob)
+  pattern = input()
+  at,gc = gc_content(pattern)
+  print(calculation(at,gc,length,prob))
