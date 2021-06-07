@@ -1,0 +1,15 @@
+
+def count(wildcards):
+    import glob
+    
+    files = []
+    for filename in glob.glob("input/*"):
+           files.append(filename) 
+    return(files)
+
+
+
+rule all:
+    input: count
+    output: touch(".status")
+    script: "counter.py"
